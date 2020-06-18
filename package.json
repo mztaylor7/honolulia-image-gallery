@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack --mode production",
     "builder": "webpack -d --watch",
-    "server": "nodemon server/app.js"
+    "start": "nodemon server/index.js"
   },
   "dependencies": {
     "@babel/core": "^7.10.2",
