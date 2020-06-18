@@ -24,3 +24,5 @@ coverage
 build/
 dist/
 
+# API KEYS #
+client/config/awsS3.js
