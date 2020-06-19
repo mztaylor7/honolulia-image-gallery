@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const db = require('./index.js')
+mongoose.Promise = global.Promise;
 
 const imagesSchema = new mongoose.Schema({
   imageUrl: String,
