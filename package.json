@@ -6,19 +6,23 @@
   "scripts": {
     "build": "webpack --mode production",
     "builder": "webpack -d --watch",
-    "server": "nodemon server/app.js"
+    "start": "nodemon server/index.js",
+    "db:setup": "node database/seed.js"
   },
   "dependencies": {
     "@babel/core": "^7.10.2",
     "@babel/preset-env": "^7.10.2",
     "@babel/preset-react": "^7.10.1",
     "axios": "^0.19.2",
+    "babel-loader": "^8.1.0",
     "express": "^4.17.1",
     "jquery": "^3.5.1",
     "mongoose": "^5.9.19",
     "nodemon": "^2.0.4",
+    "path": "^0.12.7",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "require": "^2.4.20",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11"
   },
