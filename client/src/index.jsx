@@ -12,7 +12,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        {'Image Gallery'}
+        Image Gallery
       </div>
     )
   }
