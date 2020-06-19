@@ -30,10 +30,6 @@ app.get('/picture/bigThumb/list', (req, res) => {
     })
 })
 
-app.get('/helloworld', (req, res) => {
-  console.log('Hello World');
-  res.end();
-})
 
 app.listen(PORT, () => {
   console.log(`listening on port ${PORT}`);
