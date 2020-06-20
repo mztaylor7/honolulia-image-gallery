@@ -7,7 +7,7 @@
     "build": "webpack --mode production",
     "builder": "webpack -d --watch",
     "start": "nodemon server/index.js",
-    "db:setup": "node database/seed.js",
+    "seed": "node database/seed.js",
     "sassy": "sass --watch input.scss output.css"
   },
   "dependencies": {

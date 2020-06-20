@@ -2,7 +2,7 @@ import React from 'react';
 
 const BigThumb = (props) => (
   <div className="thumbnail">
-    <img src={props.thumb.imageUrl} className="main-image" onClick={props.clicked}/>
+    <img src={props.thumb} className="main-image" onClick={props.clicked}/>
   </div>
 )
 
