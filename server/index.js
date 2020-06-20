@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/../client/dist'));
 
 app.get('/picture/bigThumb', (req, res) => {
-  Images.findOne({bigThumb: true})
+  Images.findOne({houseId: 1})
     .then((thumbnail) => {
       res.json(thumbnail);
     })
@@ -20,15 +20,15 @@ app.get('/picture/bigThumb', (req, res) => {
     })
 })
 
-app.get('/picture/bigThumb/list', (req, res) => {
-  Images.find({bigThumb: false})
-    .then((images) => {
-      res.json(images);
-    })
-    .catch((err) => {
-      console.log('error: ', err);
-    })
-})
+// app.get('/picture/bigThumb/list', (req, res) => {
+//   Images.find({bigThumb: false})
+//     .then((images) => {
+//       res.json(images);
+//     })
+//     .catch((err) => {
+//       console.log('error: ', err);
+//     })
+// })
 
 
 app.listen(PORT, () => {

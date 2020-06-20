@@ -13,7 +13,7 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      main: {},
+      main: '',
       list: [],
       modalIsOpen: false
     }
@@ -27,10 +27,10 @@ class App extends React.Component {
 
   componentDidMount() {
     axios.get('/picture/bigThumb')
-      .then((thumbnail) => {
-        console.log(thumbnail);
+      .then((house) => {
+        console.log(house);
         this.setState({
-          main: thumbnail.data
+          main: house.data.bigThumb
         });
       })
       .catch((err) => {
@@ -39,10 +39,10 @@ class App extends React.Component {
   }
 
   handleClick(e) {
-    axios.get('/picture/bigThumb/list')
-      .then((images) => {
+    axios.get('/picture/bigThumb/')
+      .then((house) => {
         this.setState({
-          list: images.data
+          list: house.data.images
         });
       })
       .then(() => {
