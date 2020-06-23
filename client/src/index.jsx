@@ -61,7 +61,7 @@ class App extends React.Component {
         </div>
         <Modal show={this.state.modalIsOpen} onHide={this.toggleModal.bind(this)}>
           <Modal.Body>
-            <Gallery images={this.state.list}/>
+            <Gallery images={this.state.list} />
           </Modal.Body>
         </Modal>
       </div>

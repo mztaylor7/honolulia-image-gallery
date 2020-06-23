@@ -12,8 +12,8 @@ app.use(express.static(__dirname + '/../client/dist'));
 
 app.get('/picture/bigThumb', (req, res) => {
   Images.findOne({houseId: 1})
-    .then((thumbnail) => {
-      res.json(thumbnail);
+    .then((house) => {
+      res.json(house);
     })
     .catch((err) => {
       console.log('error: ', err);

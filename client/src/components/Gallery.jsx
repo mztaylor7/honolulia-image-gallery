@@ -1,110 +1,103 @@
 import React from 'react';
+import styled from 'styled-components';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class Gallery extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props)
     this.state = {
 
     }
   }
 
+  // layout(images) {
+  //   var num = images.length;
+  //   var items = [];
+
+  //   for (var i = 0; i < images.length; i++) {
+  //     if (images.length - i < 3) {
+  //       if (images.length - i < 2) {
+  //         let lastImage = `
+  //         <div style="grid-column: 1/7;">
+  //           <img scr="${images[i]}">
+  //         </div>
+  //         `;
+  //         return items.push(lastImage);
+  //       } else {
+  //         let nextToLast = `
+  //         <div style="grid-column: 1/4;">
+  //           <img scr="${images[i]}">
+  //         </div>
+  //         `;
+  //         let lastImage = `
+  //         <div style="grid-column: 4/7;">
+  //           <img scr="${images[i + 1]}">
+  //         </div>
+  //         `;
+  //         return items.push(nextToLast, lastImage);
+  //       }
+  //     }
+
+  //   }
+  // }
+
+
+
+
   render() {
     return (
-      <div className="container">
-        <div className="row">
-          <div className="col">
-            <img src={this.props.images[0]}/>
-          </div>
-          <div className="col">
-            <img src={this.props.images[1]}/>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col">
-            <img src={this.props.images[2]}/>
-          </div>
-          <div className="col">
-            <img src={this.props.images[3]}/>
-          </div>
-          <div className="col">
-            <img src={this.props.images[4]}/>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col">
-            <img src={this.props.images[5]}/>
-          </div>
-          <div className="col">
-            <img src={this.props.images[6]}/>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col">
-            <img src={this.props.images[7]}/>
-          </div>
-          <div className="col">
-            <img src={this.props.images[8]}/>
-          </div>
-          <div className="col">
-            <img src={this.props.images[9]}/>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col">
-            <img src={this.props.images[10]}/>
-          </div>
-          <div className="col">
-            <img src={this.props.images[11]}/>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col">
-            <img src={this.props.images[12]}/>
-          </div>
-          <div className="col">
-            <img src={this.props.images[13]}/>
-          </div>
-          <div className="col">
-            <img src={this.props.images[14]}/>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col">
-            <img src={this.props.images[15]}/>
-          </div>
-          <div className="col">
-            <img src={this.props.images[16]}/>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col">
-            <img src={this.props.images[17]}/>
-          </div>
-          <div className="col">
-            <img src={this.props.images[18]}/>
-          </div>
-          <div className="col">
-            <img src={this.props.images[19]}/>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col">
-            <img src={this.props.images[20]}/>
-          </div>
-          <div className="col">
-            <img src={this.props.images[21]}/>
-          </div>
-        </div><div className="row">
-          <div className="col">
-            <img src={this.props.images[22]}/>
-          </div>
-          <div className="col">
-            <img src={this.props.images[23]}/>
-          </div>
-        </div>
-      </div>
-    );
+      <Container>
+
+      </Container>
+      )
+    }
   }
-}
+
+  const FlexContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 48px;
+  position: relative;
+
+  `;
+  const GridContainer = styled.div`
+  overflow: hidden;
+
+  `;
+
+  const GridWrapper = styled.div`
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    padding-bottom: 8px;
+    gap: 8px;
+    `;
+
+    const Picture = styled.div`
+    width: 100%;
+    `;
+
+    // <FlexContainer>
+    //   <GridContainer>
+    //     <GridWrapper>
+    //       {this.props.images.map((image, key) => {
+    //         return (
+    //           <React.Fragment key={key}>
+    //             <Picture>
+    //               <img src={image}/>
+    //             </Picture>
+    //           </React.Fragment>
+    //         )
+    //       })}
+    //     </GridWrapper>
+    //   </GridContainer>
+    // </FlexContainer>
 
 export default Gallery;
+
+
+
+
+
+
+
+
