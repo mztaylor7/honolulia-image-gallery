@@ -2,9 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/scss/bootstrap.scss"
+import styles from './styles.scss'
+
 import Modal from 'react-bootstrap/Modal';
 import ModalBody from 'react-bootstrap/ModalBody';
+import ModalDialog from 'react-bootstrap/ModalDialog';
 
 import BigThumb from './components/BigThumb.jsx';
 import Gallery from './components/Gallery.jsx';
@@ -19,6 +22,24 @@ class App extends React.Component {
     }
   }
 
+  layout(images, min, max) {
+    let result = [[images[0]]];
+    let random;
+    let i = 1;
+
+    while (i < images.length) {
+      random = Math.floor(Math.random() * (max - min)) + min;
+      result.push(images.slice(i, i + random));
+      i += random;
+    }
+
+    if (result.some(j => j.length < min)) {
+      return layout(images, min, max);
+    } else {
+      return result;
+    }
+  }
+
   toggleModal() {
     this.setState({
       modalIsOpen: !this.state.modalIsOpen
@@ -28,10 +49,15 @@ class App extends React.Component {
   componentDidMount() {
     axios.get('/picture/bigThumb')
       .then((house) => {
-        console.log(house);
         this.setState({
-          main: house.data.bigThumb,
-          list: house.data.images
+          main: house.data.bigThumb
+        });
+        return this.layout(house.data.images, 1, 4)
+      })
+      .then((house) => {
+        console.log('house array: ', house)
+        this.setState({
+          list: house
         });
       })
       .catch((err) => {
@@ -41,20 +67,6 @@ class App extends React.Component {
 
   handleClick(e) {
     this.toggleModal();
-
-
-    // axios.get('/picture/bigThumb/')
-    //   .then((house) => {
-    //     this.setState({
-    //       list: house.data.images
-    //     });
-    //   })
-    //   .then(() => {
-    //     this.toggleModal();
-    //   })
-    //   .catch((err) => {
-    //     console.log('error: ', err);
-    //   });
   }
 
   render() {
@@ -63,8 +75,8 @@ class App extends React.Component {
         <div>
           <BigThumb thumb={this.state.main} clicked={this.handleClick.bind(this)}/>
         </div>
-        <Modal show={this.state.modalIsOpen} onHide={this.toggleModal.bind(this)}>
-          <Modal.Body>
+        <Modal id="modal" show={this.state.modalIsOpen} onHide={this.toggleModal.bind(this)}>
+          <Modal.Body id="modal-body">
             <Gallery images={this.state.list} />
           </Modal.Body>
         </Modal>

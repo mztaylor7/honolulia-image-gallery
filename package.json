@@ -38,6 +38,8 @@
     "babel-plugin-styled-components": "^1.10.7",
     "css-loader": "^3.6.0",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor.git",
+    "jest": "^26.1.0",
+    "sass-loader": "^8.0.2",
     "style-loader": "^1.2.1"
   },
   "repository": {
