@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import 'bootstrap/dist/css/bootstrap.min.css';
+
+import { Container, Row, Col, Image } from 'react-bootstrap'
 
 class Gallery extends React.Component {
   constructor(props) {
@@ -10,34 +11,21 @@ class Gallery extends React.Component {
     }
   }
 
-  // layout(images) {
-  //   var num = images.length;
-  //   var items = [];
+  // layout(images, min, max) {
+  //   let result = [[images[0]]];
+  //   let random;
+  //   let i = 1;
 
-  //   for (var i = 0; i < images.length; i++) {
-  //     if (images.length - i < 3) {
-  //       if (images.length - i < 2) {
-  //         let lastImage = `
-  //         <div style="grid-column: 1/7;">
-  //           <img scr="${images[i]}">
-  //         </div>
-  //         `;
-  //         return items.push(lastImage);
-  //       } else {
-  //         let nextToLast = `
-  //         <div style="grid-column: 1/4;">
-  //           <img scr="${images[i]}">
-  //         </div>
-  //         `;
-  //         let lastImage = `
-  //         <div style="grid-column: 4/7;">
-  //           <img scr="${images[i + 1]}">
-  //         </div>
-  //         `;
-  //         return items.push(nextToLast, lastImage);
-  //       }
-  //     }
+  //   while (i < images.length) {
+  //     random = Math.floor(Math.random() * (max - min)) + min;
+  //     result.push(images.slice(i, i + random));
+  //     i += random;
+  //   }
 
+  //   if (result.some(j => j.length < min)) {
+  //     return layout(images, min, max);
+  //   } else {
+  //     return result;
   //   }
   // }
 
@@ -46,8 +34,19 @@ class Gallery extends React.Component {
 
   render() {
     return (
-      <Container>
-
+      <Container fluid style={{paddingLeft: 0, paddingRight: 0}}>
+        {this.props.images.map(imageRow => (
+          <Row>
+            {imageRow.map(imageCol => (
+                <Col style={{paddingLeft: 0, paddingRight: 0}}>
+                  <Picture>
+                    <img src={imageCol} className="gallery-image" />
+                  </Picture>
+                </Col>
+              ))
+            }
+          </Row>
+        ))}
       </Container>
       )
     }
@@ -72,9 +71,11 @@ class Gallery extends React.Component {
     gap: 8px;
     `;
 
-    const Picture = styled.div`
-    width: 100%;
-    `;
+  const Picture = styled.div`
+    max-width: 100%;
+    max-height: 100%;
+    margin: 4px;
+  `;
 
     // <FlexContainer>
     //   <GridContainer>

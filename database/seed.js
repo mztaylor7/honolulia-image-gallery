@@ -4,10 +4,10 @@ const Images = require('./models.js');
 const thumbnail = 'https://sokka-image-gallery.s3.us-east-2.amazonaws.com/Main.webp';
 
 const houseImages = [
+  'https://sokka-image-gallery.s3.us-east-2.amazonaws.com/Main.webp',
   'https://sokka-image-gallery.s3.us-east-2.amazonaws.com/list1.webp',
   'https://sokka-image-gallery.s3.us-east-2.amazonaws.com/list2.webp',
   'https://sokka-image-gallery.s3.us-east-2.amazonaws.com/list3.webp',
-  'https://sokka-image-gallery.s3.us-east-2.amazonaws.com/list4.webp',
   'https://sokka-image-gallery.s3.us-east-2.amazonaws.com/list5.webp',
   'https://sokka-image-gallery.s3.us-east-2.amazonaws.com/list6.webp',
   'https://sokka-image-gallery.s3.us-east-2.amazonaws.com/list7.webp',
