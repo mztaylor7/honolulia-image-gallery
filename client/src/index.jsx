@@ -30,7 +30,8 @@ class App extends React.Component {
       .then((house) => {
         console.log(house);
         this.setState({
-          main: house.data.bigThumb
+          main: house.data.bigThumb,
+          list: house.data.images
         });
       })
       .catch((err) => {
@@ -39,18 +40,21 @@ class App extends React.Component {
   }
 
   handleClick(e) {
-    axios.get('/picture/bigThumb/')
-      .then((house) => {
-        this.setState({
-          list: house.data.images
-        });
-      })
-      .then(() => {
-        this.toggleModal();
-      })
-      .catch((err) => {
-        console.log('error: ', err);
-      });
+    this.toggleModal();
+
+
+    // axios.get('/picture/bigThumb/')
+    //   .then((house) => {
+    //     this.setState({
+    //       list: house.data.images
+    //     });
+    //   })
+    //   .then(() => {
+    //     this.toggleModal();
+    //   })
+    //   .catch((err) => {
+    //     console.log('error: ', err);
+    //   });
   }
 
   render() {
