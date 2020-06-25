@@ -76,6 +76,9 @@ class App extends React.Component {
           <BigThumb thumb={this.state.main} clicked={this.handleClick.bind(this)}/>
         </div>
         <Modal id="modal" show={this.state.modalIsOpen} onHide={this.toggleModal.bind(this)}>
+          <Modal.Header closeButton>
+            <Modal.Title>3859 Owena St | $3,007,212 | 1 Bed 3 Baths</Modal.Title>
+          </Modal.Header>
           <Modal.Body id="modal-body">
             <Gallery images={this.state.list} />
           </Modal.Body>
