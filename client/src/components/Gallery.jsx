@@ -1,7 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import Modal from 'react-bootstrap/Modal';
+import ModalBody from 'react-bootstrap/ModalBody';
+import ModalDialog from 'react-bootstrap/ModalDialog';
+
 import { Container, Row, Col, Image } from 'react-bootstrap'
+
 
 class Gallery extends React.Component {
   constructor(props) {
@@ -29,25 +34,33 @@ class Gallery extends React.Component {
   //   }
   // }
 
-
+  handleClick(e) {
+    var image = e.target.src;
+    this.props.handleGalleryClick(image);
+  }
 
 
   render() {
     return (
-      <Container fluid style={{paddingLeft: 0, paddingRight: 0}}>
-        {this.props.images.map(imageRow => (
-          <Row>
-            {imageRow.map(imageCol => (
-                <Col style={{paddingLeft: 0, paddingRight: 0}}>
-                  <Picture>
-                    <img src={imageCol} className="gallery-image" />
-                  </Picture>
-                </Col>
-              ))
-            }
-          </Row>
-        ))}
-      </Container>
+      <Fragment>
+        <Container fluid style={{paddingLeft: 0, paddingRight: 0}}>
+          {this.props.images.map((imageRow, key) => (
+            <Row key={key}>
+              {imageRow.map((imageCol, key) => (
+                <Col key={key} style={{paddingLeft: 0, paddingRight: 0}}>
+                    <Picture >
+                      <img src={imageCol} className="gallery-image" onClick={this.handleClick.bind(this)} />
+                    </Picture>
+                  </Col>
+                ))
+              }
+            </Row>
+          ))}
+        </Container>
+        <Modal>
+
+        </Modal>
+      </Fragment>
       )
     }
   }

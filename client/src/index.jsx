@@ -12,7 +12,7 @@ import ModalDialog from 'react-bootstrap/ModalDialog';
 
 import BigThumb from './components/BigThumb.jsx';
 import Gallery from './components/Gallery.jsx';
-import ModalHeader from './components/ModalHeader.jsx';
+import Carousel from './components/Carousel.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -20,8 +20,10 @@ class App extends React.Component {
     this.state = {
       main: '',
       list: [],
-      modalIsOpen: false,
-      houseStats: {}
+      galModalIsOpen: false,
+      houseStats: {},
+      caroImage: '',
+      imagesArray: []
     }
   }
 
@@ -45,7 +47,7 @@ class App extends React.Component {
 
   toggleModal() {
     this.setState({
-      modalIsOpen: !this.state.modalIsOpen
+      galModalIsOpen: !this.state.galModalIsOpen
     });
   }
 
@@ -58,7 +60,8 @@ class App extends React.Component {
             address: house.data.address,
             price: house.data.price.toLocaleString(),
             beds: house.data.beds,
-            baths: house.data.baths
+            baths: house.data.baths,
+            imagesArray: house.data.images
           }
         });
         return this.layout(house.data.images, 1, 4)
@@ -78,20 +81,33 @@ class App extends React.Component {
     this.toggleModal();
   }
 
+  handleGalleryClick(image) {
+    this.setState({
+      caroImage: image
+    }, () => {
+      console.log('image clicked: ', this.state.caroImage)
+    })
+  }
+
   render() {
+
+
     return (
       <div>
         <div>
           <BigThumb thumb={this.state.main} clicked={this.handleClick.bind(this)}/>
         </div>
-        <Modal id="modal" show={this.state.modalIsOpen} onHide={this.toggleModal.bind(this)}>
+        <Modal id="modal" show={this.state.galModalIsOpen} onHide={this.toggleModal.bind(this)}>
         <Modal.Header closeButton>
           <Modal.Title>{this.state.houseStats.address} | ${this.state.houseStats.price} | {this.state.houseStats.beds} Beds {this.state.houseStats.baths} Baths</Modal.Title>
         </Modal.Header>
           <Modal.Body id="modal-body">
-            <Gallery images={this.state.list} />
+            <Gallery handleGalleryClick={this.handleGalleryClick.bind(this)} images={this.state.list} />
           </Modal.Body>
         </Modal>
+        <div>
+          <Carousel caroImage={this.state.caroImage} imagesArray={this.state.imagesArray}/>
+        </div>
       </div>
     );
   }
