@@ -30,11 +30,25 @@ const houseImages = [
   'https://sokka-image-gallery.s3.us-east-2.amazonaws.com/list24.webp'
 ]
 
+var bedroomsGen = () => {
+  return Math.floor(2 + 3 * Math.random());
+}
+var bathroomsGen = () => {
+  return Math.floor(2 + 2 * Math.random());
+}
+var addressGen = () => {
+  var streetNumber = Math.floor(3000 + (999) * Math.random());
+  return `${streetNumber} Okanoa St`
+}
+var priceGen = () => {
+  return Math.floor(2500000 + (3000000) * Math.random());
+}
+
 var houses = (houseImages, thumbnail) => {
   var homes = [];
   var house = {
     images: houseImages,
-    bigThumb: thumbnail
+    bigThumb: thumbnail,
   }
   while (homes.length <= 99) {
     homes.push(house);
@@ -47,6 +61,10 @@ var counter = 0;
 var seeds = homes.map((home) => {
   counter++
   home.houseId = counter;
+  home.address = addressGen(),
+  home.price = priceGen(),
+  home.beds = bedroomsGen(),
+  home.baths = bathroomsGen()
   return new Images(home).save();
 })
 Promise.all(seeds)
