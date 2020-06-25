@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 
-import "bootstrap/scss/bootstrap.scss"
-import styles from './styles.scss'
+import "bootstrap/scss/bootstrap.scss";
+import styles from './styles.scss';
 
 import Modal from 'react-bootstrap/Modal';
 import ModalBody from 'react-bootstrap/ModalBody';
