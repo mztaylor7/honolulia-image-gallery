@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import "bootstrap/scss/bootstrap.scss";
 import styles from './styles.scss';
+import styled from 'styled-components';
 
 import Modal from 'react-bootstrap/Modal';
 import ModalBody from 'react-bootstrap/ModalBody';
@@ -11,6 +12,7 @@ import ModalDialog from 'react-bootstrap/ModalDialog';
 
 import BigThumb from './components/BigThumb.jsx';
 import Gallery from './components/Gallery.jsx';
+import ModalHeader from './components/ModalHeader.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -18,7 +20,8 @@ class App extends React.Component {
     this.state = {
       main: '',
       list: [],
-      modalIsOpen: false
+      modalIsOpen: false,
+      houseStats: {}
     }
   }
 
@@ -50,7 +53,13 @@ class App extends React.Component {
     axios.get('/picture/bigThumb')
       .then((house) => {
         this.setState({
-          main: house.data.bigThumb
+          main: house.data.bigThumb,
+          houseStats: {
+            address: house.data.address,
+            price: house.data.price.toLocaleString(),
+            beds: house.data.beds,
+            baths: house.data.baths
+          }
         });
         return this.layout(house.data.images, 1, 4)
       })
@@ -76,9 +85,9 @@ class App extends React.Component {
           <BigThumb thumb={this.state.main} clicked={this.handleClick.bind(this)}/>
         </div>
         <Modal id="modal" show={this.state.modalIsOpen} onHide={this.toggleModal.bind(this)}>
-          <Modal.Header closeButton>
-            <Modal.Title>3859 Owena St | $3,007,212 | 1 Bed 3 Baths</Modal.Title>
-          </Modal.Header>
+        <Modal.Header closeButton>
+          <Modal.Title>{this.state.houseStats.address} | ${this.state.houseStats.price} | {this.state.houseStats.beds} Beds {this.state.houseStats.baths} Baths</Modal.Title>
+        </Modal.Header>
           <Modal.Body id="modal-body">
             <Gallery images={this.state.list} />
           </Modal.Body>
@@ -87,5 +96,28 @@ class App extends React.Component {
     );
   }
 }
+
+const Buttons = styled.button`
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+  font-weight: bold;
+  white-space: nowrap;
+  font-size: 16px;
+  line-height: 1.5;
+  color: rgb(59, 65, 68);
+  background-color: rgb(255, 255, 255);
+  margin: 0px;
+  border-radius: 8px;
+  border-width: 1px;
+  border-style: solid;
+  transition: top 0.1s ease 0s, box-shadow 0.1s ease 0s, border-color 0.1s ease 0s, background-color 0.1s ease 0s, color 0.1s ease 0s;
+  padding: 8px 16px;
+  border-color: rgb(205, 209, 212);
+  float: right;
+`
+const ButtonHolder = styled.div`
+  float: right;
+`
 
 ReactDOM.render(<App />, document.getElementById('app'));
