@@ -47,8 +47,16 @@ class Carousel extends React.Component {
         <Picture>
           <img id="carol-image" src={this.state.currentSlide}/>
         </Picture>
-        <LeftButton onClick={this.leftClick.bind(this)}/>
-        <RightButton onClick={this.rightClick.bind(this)}/>
+        <LeftButton onClick={this.leftClick.bind(this)}>
+          <SvgDiv>
+            <svg className="svg-caro" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M14.292 16.494l7.147 7.056-1.869 1.893-9.067-8.951 9.069-8.927 1.866 1.896z" fill="#ddd"></path></svg>
+          </SvgDiv>
+        </LeftButton>
+        <RightButton onClick={this.rightClick.bind(this)}>
+          <SvgDiv>
+            <svg className="svg-caro" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M17.65 16.513l-7.147-7.055 1.868-1.893 9.068 8.951-9.069 8.927-1.866-1.896z" fill="#ddd"></path></svg>
+          </SvgDiv>
+          </RightButton>
       </CaroCon>
     )
   }
@@ -56,7 +64,7 @@ class Carousel extends React.Component {
 
 const CaroCon = styled.div`
   display: flex;
-  vertical-align: middle;
+  align-items: middle;
   justify-content: center;
 `
 
@@ -73,7 +81,7 @@ const Button = styled.button`
   position: absolute;
   top: calc(50% - 12px);
   display: flex;
-  alight-items: center;
+  align-items: center;
   justify-content: center;
   cursor: pointer;
   width: 48px;
@@ -82,6 +90,10 @@ const Button = styled.button`
   border-radius: 24px;
   padding: 1px;
   border-style: none;
+  transition: box-shadow 0.1s ease 0s, color 0.1s ease 0s, border-color 0.2s ease 0s, background-color 0.2s ease 0s;
+  &:hover {
+    background-color: rgb(170, 170, 170);
+  }
 `
 
 const RightButton = styled(Button)`
@@ -92,4 +104,17 @@ const LeftButton = styled(Button)`
   left: 20px;
   right: auto;
 `;
+
+const SvgDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+`
+
+// &:hover {
+//   background-color: rgb(255, 255, 255);
+//   color: rgb(217, 60, 35);
+// }
+
 export default Carousel;

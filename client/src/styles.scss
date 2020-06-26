@@ -1,5 +1,12 @@
 @import "~bootstrap/scss/bootstrap.scss";
 
+.svg-caro {
+  height: 24px;
+  width: 24px;
+  display: flex;
+  align-items: center;
+}
+
 .gallery-image {
   width: 100%;
   height: 100%;
