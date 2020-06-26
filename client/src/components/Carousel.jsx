@@ -76,7 +76,7 @@ const Picture = styled.div`
 `;
 
 const Button = styled.button`
-  // outline: ${props => props.active  ? 'none!important' : 'none!important'};
+  outline: ${props => props.active  ? 'none!important' : 'none!important'};
   z-index: 4;
   position: absolute;
   top: calc(50% - 12px);
