@@ -12,7 +12,6 @@ import ModalDialog from 'react-bootstrap/ModalDialog';
 
 import BigThumb from './components/BigThumb.jsx';
 import Gallery from './components/Gallery.jsx';
-import ModalHeader from './components/ModalHeader.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -20,11 +19,15 @@ class App extends React.Component {
     this.state = {
       main: '',
       list: [],
-      modalIsOpen: false,
-      houseStats: {}
+      galModalIsOpen: false,
+      houseStats: {},
+      imagesArray: []
     }
   }
 
+  // Breaks up images array into an array of arrays in sizes of 1 to 3. This is to
+  // generate the layout of the images for the gallery when mapping in gallery
+  // component
   layout(images, min, max) {
     let result = [[images[0]]];
     let random;
@@ -45,7 +48,7 @@ class App extends React.Component {
 
   toggleModal() {
     this.setState({
-      modalIsOpen: !this.state.modalIsOpen
+      galModalIsOpen: !this.state.galModalIsOpen
     });
   }
 
@@ -58,8 +61,9 @@ class App extends React.Component {
             address: house.data.address,
             price: house.data.price.toLocaleString(),
             beds: house.data.beds,
-            baths: house.data.baths
-          }
+            baths: house.data.baths,
+          },
+          imagesArray: house.data.images
         });
         return this.layout(house.data.images, 1, 4)
       })
@@ -76,20 +80,24 @@ class App extends React.Component {
 
   handleClick(e) {
     this.toggleModal();
+    console.log(this.state.imagesArray)
   }
 
+
   render() {
+
+
     return (
       <div>
         <div>
           <BigThumb thumb={this.state.main} clicked={this.handleClick.bind(this)}/>
         </div>
-        <Modal id="modal" show={this.state.modalIsOpen} onHide={this.toggleModal.bind(this)}>
+        <Modal id="modal" show={this.state.galModalIsOpen} onHide={this.toggleModal.bind(this)}>
         <Modal.Header closeButton>
           <Modal.Title>{this.state.houseStats.address} | ${this.state.houseStats.price} | {this.state.houseStats.beds} Beds {this.state.houseStats.baths} Baths</Modal.Title>
         </Modal.Header>
           <Modal.Body id="modal-body">
-            <Gallery images={this.state.list} />
+            <Gallery images={this.state.list} imagesArray={this.state.imagesArray}/>
           </Modal.Body>
         </Modal>
       </div>
