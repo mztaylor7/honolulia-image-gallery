@@ -4,22 +4,22 @@ import styled from 'styled-components';
 const BigThumb = (props) => (
   <React.Fragments>
     <Sizer>
-      <BigImgForeground>
+      <BigImgForeground onClick={props.clicked}>
         <BigImgBackground>
           <HeroGrid>
             <HeroGridMain>
               <Picture>
-
+                <img src={props.thumb}/>
               </Picture>
             </HeroGridMain>
             <HeroGridTR>
               <Picture>
-
+                <img src={props.imagesArray[1]}/>
               </Picture>
             </HeroGridTR>
             <HeroGridBR>
               <Picture>
-
+                <img src={props.imagesArray[2]}/>
               </Picture>
             </HeroGridBR>
           </HeroGrid>
@@ -32,11 +32,11 @@ const BigThumb = (props) => (
         </HeroDetails>
       </BigImgForeground>
     </Sizer>
-  <div className="thumbnail">
-    <img src={props.thumb} className="main-image" onClick={props.clicked}/>
-  </div>
   </React.Fragments>
 )
+  // <div className="thumbnail">
+  //   <img src={props.thumb} className="main-image" onClick={props.clicked}/>
+  // </div>
 
 const Sizer = styled.div`
   width: 992px;

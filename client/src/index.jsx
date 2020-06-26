@@ -88,7 +88,7 @@ class App extends React.Component {
     return (
       <div>
         <HeroCon>
-          <BigThumb thumb={this.state.main} clicked={this.handleClick.bind(this)}/>
+          <BigThumb thumb={this.state.main} clicked={this.handleClick.bind(this)} imagesArray={this.state.imagesArray}/>
         </HeroCon>
         <Modal id="modal" show={this.state.galModalIsOpen} onHide={this.toggleModal.bind(this)}>
         <Modal.Header closeButton>
