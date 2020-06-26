@@ -87,9 +87,9 @@ class App extends React.Component {
 
     return (
       <div>
-        <div>
+        <HeroCon>
           <BigThumb thumb={this.state.main} clicked={this.handleClick.bind(this)}/>
-        </div>
+        </HeroCon>
         <Modal id="modal" show={this.state.galModalIsOpen} onHide={this.toggleModal.bind(this)}>
         <Modal.Header closeButton>
           <Modal.Title>{this.state.houseStats.address} | ${this.state.houseStats.price} | {this.state.houseStats.beds} Beds {this.state.houseStats.baths} Baths</Modal.Title>
@@ -158,7 +158,15 @@ const ButtonText = styled.span`
   flex: 1 1 0px;
   font-family: TruliaSans, system, -apple-system, Roboto, "Segoe UI Bold", Arial, sans-serif!important;
 `
-
+const HeroCon = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  height: 500px;
+  max-height: calc(100vh - 275px);
+  min-height: 275px;
+  overflow: hidden;
+`
 // heart svg
 // <svg class="svg" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M26.95 11.863a5.214 5.214 0 0 0-8.908-3.677l-1.908 1.908-1.906-1.908a5.214 5.214 0 1 0-7.377 7.366l1.912 1.913 7.371 7.373 7.373-7.373 1.912-1.912a5.193 5.193 0 0 0 1.53-3.69zM16.157 6.31A7.874 7.874 0 1 1 27.3 17.433l-1.913 1.913-9.254 9.254-1.88-1.88-7.373-7.374-1.91-1.91a7.874 7.874 0 1 1 11.137-11.13l.027.025.022-.022z" fill="#869099"></path></svg>
 
