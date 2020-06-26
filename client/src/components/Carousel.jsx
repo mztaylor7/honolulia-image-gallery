@@ -85,7 +85,7 @@ const RightButton = styled.button`
   border-radius: 24px;
   padding: 1px;
   border-style: none;
-`
+`;
 const LeftButton = styled.button`
   z-index: 4;
   position: absolute;
@@ -102,5 +102,5 @@ const LeftButton = styled.button`
   border-radius: 24px;
   padding: 1px;
   border-style: none;
-`
+`;
 export default Carousel;

@@ -30,6 +30,8 @@ const houseImages = [
   'https://sokka-image-gallery.s3.us-east-2.amazonaws.com/list24.webp'
 ]
 
+// Random number range formula for range of [x, y)
+// Math.floor(x + (y - x) * Math.random());
 var bedroomsGen = () => {
   return Math.floor(2 + 3 * Math.random());
 }

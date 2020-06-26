@@ -19,24 +19,6 @@ class Gallery extends React.Component {
     }
   }
 
-  // layout(images, min, max) {
-  //   let result = [[images[0]]];
-  //   let random;
-  //   let i = 1;
-
-  //   while (i < images.length) {
-  //     random = Math.floor(Math.random() * (max - min)) + min;
-  //     result.push(images.slice(i, i + random));
-  //     i += random;
-  //   }
-
-  //   if (result.some(j => j.length < min)) {
-  //     return layout(images, min, max);
-  //   } else {
-  //     return result;
-  //   }
-  // }
-
   handleClick(e) {
     var image = e.target.src;
     this.setState({
@@ -85,25 +67,6 @@ class Gallery extends React.Component {
     }
   }
 
-  const FlexContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin: 48px;
-  position: relative;
-
-  `;
-  const GridContainer = styled.div`
-  overflow: hidden;
-
-  `;
-
-  const GridWrapper = styled.div`
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    padding-bottom: 8px;
-    gap: 8px;
-    `;
-
   const Picture = styled.div`
     max-width: 100%;
     max-height: 100%;
@@ -111,22 +74,6 @@ class Gallery extends React.Component {
     display: flex;
     justify-content: center;
   `;
-
-    // <FlexContainer>
-    //   <GridContainer>
-    //     <GridWrapper>
-    //       {this.props.images.map((image, key) => {
-    //         return (
-    //           <React.Fragment key={key}>
-    //             <Picture>
-    //               <img src={image}/>
-    //             </Picture>
-    //           </React.Fragment>
-    //         )
-    //       })}
-    //     </GridWrapper>
-    //   </GridContainer>
-    // </FlexContainer>
 
 export default Gallery;
 
