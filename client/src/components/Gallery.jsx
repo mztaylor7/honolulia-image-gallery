@@ -73,6 +73,10 @@ class Gallery extends React.Component {
     margin: 4px;
     display: flex;
     justify-content: center;
+    overflow: hidden;
+    &:hover img {
+      transform: scale(1.06)
+    }
   `;
 
 export default Gallery;

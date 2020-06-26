@@ -1,9 +1,27 @@
 @import "~bootstrap/scss/bootstrap.scss";
 
+body {
+  font-family: TruliaSans, system, -apple-system, Roboto, "Segoe UI Bold", Arial, sans-serif;
+}
+
+// removes bootstrap outline on click
+.close:focus {
+  outline: none !important;
+  outline-offset: none !important;
+}
+
+.svg-caro {
+  height: 24px;
+  width: 24px;
+  display: flex;
+  align-items: center;
+}
+
 .gallery-image {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  transition: all .4s ease-in-out;
 }
 
 .modal-open .modal {
