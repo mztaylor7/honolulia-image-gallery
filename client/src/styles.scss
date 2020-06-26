@@ -1,5 +1,11 @@
 @import "~bootstrap/scss/bootstrap.scss";
 
+// removes bootstrap outline on click
+.btn:focus {
+  outline: none !important;
+  outline-offset: none !important;
+}
+
 .svg-caro {
   height: 24px;
   width: 24px;
