@@ -68,7 +68,6 @@ class App extends React.Component {
         return this.layout(house.data.images, 1, 4)
       })
       .then((house) => {
-        console.log('house array: ', house)
         this.setState({
           list: house
         });
@@ -80,7 +79,6 @@ class App extends React.Component {
 
   handleClick(e) {
     this.toggleModal();
-    console.log(this.state.imagesArray)
   }
 
 
@@ -95,6 +93,20 @@ class App extends React.Component {
         <Modal id="modal" show={this.state.galModalIsOpen} onHide={this.toggleModal.bind(this)}>
         <Modal.Header closeButton>
           <Modal.Title>{this.state.houseStats.address} | ${this.state.houseStats.price} | {this.state.houseStats.beds} Beds {this.state.houseStats.baths} Baths</Modal.Title>
+          <ButtonHolder>
+            <Buttons>
+              <SvgHolder>
+                <svg className="svg-caro" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M26.95 11.863a5.214 5.214 0 0 0-8.908-3.677l-1.908 1.908-1.906-1.908a5.214 5.214 0 1 0-7.377 7.366l1.912 1.913 7.371 7.373 7.373-7.373 1.912-1.912a5.193 5.193 0 0 0 1.53-3.69zM16.157 6.31A7.874 7.874 0 1 1 27.3 17.433l-1.913 1.913-9.254 9.254-1.88-1.88-7.373-7.374-1.91-1.91a7.874 7.874 0 1 1 11.137-11.13l.027.025.022-.022z" fill="#869099"></path></svg>
+                <ButtonText>Save</ButtonText>
+              </SvgHolder>
+            </Buttons>
+            <Buttons>
+              <SvgHolder>
+                <svg className="svg-caro" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M17.29 7.2v14.285h-2.66V7.201l-3.99 3.99L8.76 9.31l7.2-7.2 7.2 7.2-1.88 1.88-3.99-3.99zm5.32 9.298h-2.66v-2.66h5.32v15.295H6.65V13.838h5.32v2.66H9.31v9.975h13.3v-9.975z" fill="#869099"></path></svg>
+                <ButtonText>Share</ButtonText>
+              </SvgHolder>
+            </Buttons>
+          </ButtonHolder>
         </Modal.Header>
           <Modal.Body id="modal-body">
             <Gallery images={this.state.list} imagesArray={this.state.imagesArray}/>
@@ -115,7 +127,7 @@ const Buttons = styled.button`
   line-height: 1.5;
   color: rgb(59, 65, 68);
   background-color: rgb(255, 255, 255);
-  margin: 0px;
+  margin-left: 16px;
   border-radius: 8px;
   border-width: 1px;
   border-style: solid;
@@ -123,9 +135,39 @@ const Buttons = styled.button`
   padding: 8px 16px;
   border-color: rgb(205, 209, 212);
   float: right;
+  &:hover{
+    background-color: rgb(239,239,239);
+  }
+  &:focus{
+    outline-color: rgb(239,239,239);
+  }
+  min-width: 100px;
 `
 const ButtonHolder = styled.div`
-  float: right;
+  position: fixed;
+  right: 100px
 `
+const SvgHolder = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+`
+const ButtonText = styled.span`
+  width: 100%;
+  margin-left: 8px;
+  flex: 1 1 0px;
+  font-family: TruliaSans, system, -apple-system, Roboto, "Segoe UI Bold", Arial, sans-serif!important;
+  text-align: center;
+  font-weight: bold;
+  white-space: nowrap;
+  font-size: 16px;
+  line-height: 1.5;
+`
+
+// heart svg
+// <svg class="svg" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M26.95 11.863a5.214 5.214 0 0 0-8.908-3.677l-1.908 1.908-1.906-1.908a5.214 5.214 0 1 0-7.377 7.366l1.912 1.913 7.371 7.373 7.373-7.373 1.912-1.912a5.193 5.193 0 0 0 1.53-3.69zM16.157 6.31A7.874 7.874 0 1 1 27.3 17.433l-1.913 1.913-9.254 9.254-1.88-1.88-7.373-7.374-1.91-1.91a7.874 7.874 0 1 1 11.137-11.13l.027.025.022-.022z" fill="#869099"></path></svg>
+
+// share svg
+// <svg class="svg" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M17.29 7.2v14.285h-2.66V7.201l-3.99 3.99L8.76 9.31l7.2-7.2 7.2 7.2-1.88 1.88-3.99-3.99zm5.32 9.298h-2.66v-2.66h5.32v15.295H6.65V13.838h5.32v2.66H9.31v9.975h13.3v-9.975z" fill="#869099"></path></svg>
 
 ReactDOM.render(<App />, document.getElementById('app'));
