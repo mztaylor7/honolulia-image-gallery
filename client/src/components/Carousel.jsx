@@ -14,7 +14,6 @@ class Carousel extends React.Component {
     var current = imagesArray.indexOf(this.state.currentSlide);
     var last = imagesArray[imagesArray.length - 1]
     var previous = imagesArray[current - 1]
-    console.log(imagesArray);
     if (current === 0) {
       this.setState({
         currentSlide: last
@@ -31,7 +30,6 @@ class Carousel extends React.Component {
     var current = imagesArray.indexOf(this.state.currentSlide);
     var first = imagesArray[0]
     var next = imagesArray[current + 1]
-    console.log(imagesArray);
     if (current === imagesArray.length - 1) {
       this.setState({
         currentSlide: first
@@ -69,38 +67,29 @@ const Picture = styled.div`
   justify-content: center;
 `;
 
-const RightButton = styled.button`
+const Button = styled.button`
+  outline: ${props => props.active  ? 'none!important' : 'none!important'};
   z-index: 4;
   position: absolute;
   top: calc(50% - 12px);
+  display: flex;
+  alight-items: center;
+  justify-content: center;
+  cursor: pointer;
+  width: 48px;
+  height: 48px;
+  background-color: rgb(59, 65, 68);
+  border-radius: 24px;
+  padding: 1px;
+  border-style: none;
+`
+
+const RightButton = styled(Button)`
   left: auto;
   right: 20px;
-  display: flex;
-  alight-items: center;
-  justify-content: center;
-  cursor: pointer;
-  width: 48px;
-  height: 48px;
-  background-color: rgb(59, 65, 68);
-  border-radius: 24px;
-  padding: 1px;
-  border-style: none;
 `;
-const LeftButton = styled.button`
-  z-index: 4;
-  position: absolute;
-  top: calc(50% - 12px);
+const LeftButton = styled(Button)`
   left: 20px;
   right: auto;
-  display: flex;
-  alight-items: center;
-  justify-content: center;
-  cursor: pointer;
-  width: 48px;
-  height: 48px;
-  background-color: rgb(59, 65, 68);
-  border-radius: 24px;
-  padding: 1px;
-  border-style: none;
 `;
 export default Carousel;

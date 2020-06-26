@@ -25,6 +25,9 @@ class App extends React.Component {
     }
   }
 
+  // Breaks up images array into an array of arrays in sizes of 1 to 3. This is to
+  // generate the layout of the images for the gallery when mapping in gallery
+  // component
   layout(images, min, max) {
     let result = [[images[0]]];
     let random;
