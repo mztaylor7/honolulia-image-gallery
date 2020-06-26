@@ -1,7 +1,11 @@
 @import "~bootstrap/scss/bootstrap.scss";
 
+body {
+  font-family: TruliaSans, system, -apple-system, Roboto, "Segoe UI Bold", Arial, sans-serif;
+}
+
 // removes bootstrap outline on click
-.btn:focus {
+.close:focus {
   outline: none !important;
   outline-offset: none !important;
 }
@@ -17,6 +21,7 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
+  transition: all .4s ease-in-out;
 }
 
 .modal-open .modal {

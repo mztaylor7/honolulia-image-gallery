@@ -157,11 +157,6 @@ const ButtonText = styled.span`
   margin-left: 8px;
   flex: 1 1 0px;
   font-family: TruliaSans, system, -apple-system, Roboto, "Segoe UI Bold", Arial, sans-serif!important;
-  text-align: center;
-  font-weight: bold;
-  white-space: nowrap;
-  font-size: 16px;
-  line-height: 1.5;
 `
 
 // heart svg
