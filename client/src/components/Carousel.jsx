@@ -15,7 +15,7 @@ class Carousel extends React.Component {
     return (
       <CaroCon>
         <Picture>
-          <img src={this.state.currentSlide}/>
+          <img id="carol-image" src={this.state.currentSlide}/>
         </Picture>
       </CaroCon>
     )
@@ -28,8 +28,10 @@ const CaroCon = styled.div`
 `
 
 const Picture = styled.div`
-    max-width: 100%;
-    max-height: 100%;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    box-sizing: border-box;
   `;
 
 export default Carousel;

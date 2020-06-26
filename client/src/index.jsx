@@ -12,7 +12,6 @@ import ModalDialog from 'react-bootstrap/ModalDialog';
 
 import BigThumb from './components/BigThumb.jsx';
 import Gallery from './components/Gallery.jsx';
-import Carousel from './components/Carousel.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -22,7 +21,6 @@ class App extends React.Component {
       list: [],
       galModalIsOpen: false,
       houseStats: {},
-      caroImage: '',
       imagesArray: []
     }
   }
@@ -81,13 +79,6 @@ class App extends React.Component {
     this.toggleModal();
   }
 
-  handleGalleryClick(image) {
-    this.setState({
-      caroImage: image
-    }, () => {
-      console.log('image clicked: ', this.state.caroImage)
-    })
-  }
 
   render() {
 
@@ -102,12 +93,9 @@ class App extends React.Component {
           <Modal.Title>{this.state.houseStats.address} | ${this.state.houseStats.price} | {this.state.houseStats.beds} Beds {this.state.houseStats.baths} Baths</Modal.Title>
         </Modal.Header>
           <Modal.Body id="modal-body">
-            <Gallery handleGalleryClick={this.handleGalleryClick.bind(this)} images={this.state.list} />
+            <Gallery images={this.state.list} imagesArray={this.state.imagesArray}/>
           </Modal.Body>
         </Modal>
-        <div>
-          <Carousel caroImage={this.state.caroImage} imagesArray={this.state.imagesArray}/>
-        </div>
       </div>
     );
   }

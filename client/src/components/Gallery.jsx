@@ -7,12 +7,15 @@ import ModalDialog from 'react-bootstrap/ModalDialog';
 
 import { Container, Row, Col, Image } from 'react-bootstrap'
 
+import Carousel from './Carousel.jsx';
+
 
 class Gallery extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-
+      carModalIsOpen: false,
+      caroImage: ''
     }
   }
 
@@ -36,13 +39,23 @@ class Gallery extends React.Component {
 
   handleClick(e) {
     var image = e.target.src;
-    this.props.handleGalleryClick(image);
+    this.setState({
+      caroImage: image
+    }, () => {
+      this.toggleModal();
+    })
+  }
+
+  toggleModal() {
+    this.setState({
+      carModalIsOpen: !this.state.carModalIsOpen
+    });
   }
 
 
   render() {
     return (
-      <Fragment>
+      <React.Fragment>
         <Container fluid style={{paddingLeft: 0, paddingRight: 0}}>
           {this.props.images.map((imageRow, key) => (
             <Row key={key}>
@@ -57,10 +70,17 @@ class Gallery extends React.Component {
             </Row>
           ))}
         </Container>
-        <Modal>
-
+        <Modal id="modal" show={this.state.carModalIsOpen} onHide={this.toggleModal.bind(this)}>
+          <Modal.Header closeButton>
+            <Modal.Title>
+              Photos
+            </Modal.Title>
+          </Modal.Header>
+          <Modal.Body id="modal-body-carol">
+            <Carousel caroImage={this.state.caroImage} imagesArray={this.props.imagesArray}/>
+          </Modal.Body>
         </Modal>
-      </Fragment>
+      </React.Fragment>
       )
     }
   }
