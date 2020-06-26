@@ -108,6 +108,8 @@ class Gallery extends React.Component {
     max-width: 100%;
     max-height: 100%;
     margin: 4px;
+    display: flex;
+    justify-content: center;
   `;
 
     // <FlexContainer>

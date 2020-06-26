@@ -59,8 +59,8 @@ class App extends React.Component {
             price: house.data.price.toLocaleString(),
             beds: house.data.beds,
             baths: house.data.baths,
-            imagesArray: house.data.images
-          }
+          },
+          imagesArray: house.data.images
         });
         return this.layout(house.data.images, 1, 4)
       })
@@ -77,6 +77,7 @@ class App extends React.Component {
 
   handleClick(e) {
     this.toggleModal();
+    console.log(this.state.imagesArray)
   }
 
 
