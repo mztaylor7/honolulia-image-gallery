@@ -5,7 +5,7 @@ const BigThumb = (props) => (
   <React.Fragment>
     <Sizer>
       <HeroImgTitle>
-          <BigImgBackground>
+          <BigImgBackground onClick={props.clicked}>
             <HeroGrid>
               <HeroGridMain>
                 <PictureMain>
@@ -56,9 +56,16 @@ const BigThumb = (props) => (
               </HeroShare>
             </HeroInfoButtons>
           </HeroInfoBanner>
-          <HeroDetails>
-
-          </HeroDetails>
+          <HeroFooter onClick={props.clicked}>
+            <HeroFootButt>
+              <HeroFootSvgCon>
+                <svg class="svg" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M6.65 20.335l4.305-4.784 3.519 3.22 5.949-7.848 4.847 8.143V6.65H6.65v13.685zm0 3.976v.959h18.62v-1.003l-5.113-8.59-5.326 7.027-3.693-3.38-4.488 4.987zM27.93 3.99v23.94H3.99V3.99h23.94zM13.965 13.3a1.995 1.995 0 1 1 0-3.99 1.995 1.995 0 0 1 0 3.99z" fill="#fff"></path></svg>
+              </HeroFootSvgCon>
+              <HeroFootTxtCon>
+                <span id="hero-foot-span">{props.imagesArray.length}</span>
+              </HeroFootTxtCon>
+            </HeroFootButt>
+          </HeroFooter>
       </HeroImgTitle>
     </Sizer>
   </React.Fragment>
@@ -87,15 +94,19 @@ const BigImgBackground = styled.div`
   display: flex;
   width: 100%;
   height: 100%;
+  &:hover {
+    transform: scale(1.04)
+  }
+  transition: all .4s ease-in-out;
 `;
 
 const HeroGrid = styled.div`
-display: grid;
-grid-template-columns: 1fr 1fr 1fr 1fr;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 50% 50% 50%;
   `;
 const HeroGridMain = styled.div`
-min-height: 300px;
+  min-height: 300px;
   grid-row: 1 / 3;
   grid-column: 1 / 4;
   border-right: 8px solid rgb(255, 255, 255);
@@ -136,7 +147,6 @@ const PictureSmall = styled.div`
 
 
 
-
 const HeroInfoBanner = styled.div`
   position: absolute;
   top: 0px;
@@ -172,6 +182,7 @@ const HeroInfoSold = styled.span`
   padding: 2px 4px;
   display: inline-flex;
   border-radius: 4px;
+  cursor: default;
 `
 const HeroInfoDate = styled.span`
   margin-right: 4px;
@@ -183,9 +194,8 @@ const HeroInfoDate = styled.span`
   padding: 2px 4px;
   display: inline-flex;
   border-radius: 4px;
+  cursor: default;
 `
-
-
 
 
 
@@ -211,6 +221,12 @@ const HeroButtons = styled.div`
   transition: top 0.1s ease 0s, box-shadow 0.1s ease 0s, border-color 0.1s ease 0s, background-color 0.1s ease 0s, color 0.1s ease 0s;
   padding: 8px 16px;
   border-color: rgb(205, 209, 212);
+  &:hover{
+    background-color: rgb(239,239,239);
+  }
+  &:focus{
+    outline-color: rgb(239,239,239);
+  }
 `
 const HeroSave = styled(HeroButtons)`
   margin-bottom: 0;
@@ -236,11 +252,13 @@ const HeroButtonSpanCon = styled.div`
   width: 100%;
   flex: 1 1 0px;
   margin: 0px 8px;
+
+
 `
 
 
 
-const HeroDetails = styled.div`
+const HeroFooter = styled.div`
   position: absolute;
   display: flex;
   justify-content: flex-end;
@@ -248,10 +266,53 @@ const HeroDetails = styled.div`
   right: 0px;
   bottom: 8px;
   max-width: 992px;
-  padding-left: calc(env(safe-area-inset-left) + 16px);
-  padding-right: calc(env(safe-area-inset-right) + 8px);
+  padding-left: 16px;
+  padding-right: 8px;
   z-index: 1;
   margin: auto;
 `;
+
+const HeroFootButt = styled.button`
+  outline: ${props => props.active  ? 'none!important' : 'none!important'};
+  cursor: pointer;
+  text-align: center;
+  font-weight: bold;
+  white-space: nowrap;
+  line-height: 1.5;
+  height: 28px;
+  background-color: rgba(59, 65, 68, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(255, 255, 255);
+  font-size: 14px;
+  margin: 0px;
+  transition: top 0.1s ease 0s, box-shadow 0.1s ease 0s, border-color 0.1s ease 0s, background-color 0.1s ease 0s, color 0.1s ease 0s;
+  border-radius: 4px;
+  padding: 0px 8px;
+  border-width: initial;
+  border-style: none;
+  border-color: initial;
+  border-image: initial;
+  &:hover {
+    background: rgba(129,129,129, 0.8);
+  }
+`
+
+const HeroFootMedCon = styled.div`
+  flex-direction: row;
+  align-items: center;
+  display: flex;
+`
+
+const HeroFootSvgCon = styled.div`
+  display: inline-block;
+  font-size: 0px;
+  width: 16px;
+  height: 16px;
+`
+const HeroFootTxtCon = styled.div`
+  margin-left: 4px;
+`
 
   export default BigThumb;
