@@ -22,7 +22,7 @@ coverage
 
 # Compiled Dirs (http://nodejs.org/api/addons.html)
 build/
-dist/
+dist/bundle.js
 
 # API KEYS #
 client/config/awsS3.js
