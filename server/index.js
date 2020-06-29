@@ -1,7 +1,7 @@
 const express = require('express');
 
 const app = express();
-const PORT = 3333;
+const PORT = 8001;
 
 const Images = require('../database/models.js');
 
@@ -19,17 +19,6 @@ app.get('/picture/bigThumb', (req, res) => {
       console.log('error: ', err);
     })
 })
-
-// app.get('/picture/bigThumb/list', (req, res) => {
-//   Images.find({bigThumb: false})
-//     .then((images) => {
-//       res.json(images);
-//     })
-//     .catch((err) => {
-//       console.log('error: ', err);
-//     })
-// })
-
 
 app.listen(PORT, () => {
   console.log(`listening on port ${PORT}`);

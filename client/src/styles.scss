@@ -1,9 +1,5 @@
 @import "~bootstrap/scss/bootstrap.scss";
 
-body {
-  font-family: TruliaSans, system, -apple-system, Roboto, "Segoe UI Bold", Arial, sans-serif;
-}
-
 // removes bootstrap outline on click
 .close:focus {
   outline: none !important;
