@@ -53,7 +53,9 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('http://127.0.0.1:8001/picture/bigThumb')
+    var urlParams = new URLSearchParams(window.location.search);
+    var myId = urlParams.get('id');
+    axios.get(`http://127.0.0.1:8001/picture/bigThumb/${myId}`)
       .then((house) => {
         this.setState({
           main: house.data.bigThumb,
