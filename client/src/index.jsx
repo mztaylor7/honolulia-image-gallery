@@ -53,7 +53,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('/picture/bigThumb')
+    axios.get('http://127.0.0.1:8001/picture/bigThumb')
       .then((house) => {
         this.setState({
           main: house.data.bigThumb,
