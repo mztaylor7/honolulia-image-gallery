@@ -27,11 +27,8 @@ const BigThumb = (props) => (
           <HeroInfoBanner>
             <HeroInfoHomeStatus>
               <HeroInfoSold>
-                <span>SOLD</span>
+                <span>FOR SALE</span>
               </HeroInfoSold>
-              <HeroInfoDate>
-                <span>DEC 13, 2019</span>
-              </HeroInfoDate>
             </HeroInfoHomeStatus>
             <HeroInfoButtons>
               <HeroSave>
@@ -176,8 +173,9 @@ const HeroInfoSold = styled.span`
   margin-right: 4px;
   text-transform: uppercase;
   background-color: rgb(255, 255, 255);
-  color: rgb(255, 94, 63);
+  color: rgb(53, 194, 125);
   font-size: 12px;
+  font-weight: bold;
   line-height: 1.33;
   padding: 2px 4px;
   display: inline-flex;
