@@ -14,16 +14,20 @@
 npm install
 ```
 
-## Usage
+## Build
 
 ```sh
-to seed the db use
-npm run seed
-
-to build the bundle use
 npm run build
+```
 
-to start the server use
+## Usage - Seed Database
+
+```sh
+npm run seed
+```
+## Usage - Start
+
+```sh
 npm run start
 ```
 
@@ -33,9 +37,11 @@ npm run start
 npm run test
 ```
 
-## Usage
+## Preview
 
 ![Showcase](https://i.imgur.com/2tpmTT7.gif)
+
+![MainThumbnail](https://i.imgur.com/oNFw7Kz.png)
 
 ## Author
 
