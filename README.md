@@ -41,8 +41,8 @@ npm run test
 
 ```sh
 Gif showcasing app:
-https://i.imgur.com/2tpmTT7.gif
 ```
+https://i.imgur.com/2tpmTT7.gif
 
 
 ![MainThumbnail](https://i.imgur.com/oNFw7Kz.png)
