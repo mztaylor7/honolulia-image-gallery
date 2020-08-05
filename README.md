@@ -33,6 +33,10 @@ npm run start
 npm run test
 ```
 
+## Usage
+
+![Showcase](https://i.imgur.com/2tpmTT7.gif)
+
 ## Author
 
 👤 **Michael Taylor**
