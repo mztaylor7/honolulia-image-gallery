@@ -39,7 +39,11 @@ npm run test
 
 ## Preview
 
-![Showcase](https://i.imgur.com/2tpmTT7.gif)
+```sh
+Gif showcasing app:
+https://i.imgur.com/2tpmTT7.gif
+```
+
 
 ![MainThumbnail](https://i.imgur.com/oNFw7Kz.png)
 
